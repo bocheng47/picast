@@ -1,39 +1,52 @@
-import os
-from datetime import datetime
+from flask import Flask, request, abort
 
-from flask import Flask, abort, request
-
-# https://github.com/line/line-bot-sdk-python
-from linebot import LineBotApi, WebhookHandler
-from linebot.exceptions import InvalidSignatureError
-from linebot.models import MessageEvent, TextMessage, TextSendMessage
+from linebot import (
+    LineBotApi, WebhookHandler
+)
+from linebot.exceptions import (
+    InvalidSignatureError
+)
+from linebot.models import (
+    MessageEvent, TextMessage, TextSendMessage,
+)
 
 app = Flask(__name__)
 
 line_bot_api = LineBotApi('ArjtHTRBrCzfbKcIVIgaZI6iNVVGduEgSTcCe7WRizbMtZL7KP6XG02U/q/fKDQRK+ffSjGH/wPwV5ctoEdWDM2F/vaxaVjq2gd1AdpWdTDxVaZUxP5ft7ApKPSiRJVvvXUOemyIRWN2ryxJBsZmkAdB04t89/1O/w1cDnyilFU=')
 handler = WebhookHandler('dc64c782fed6cb4e9f7fc02482438aac')
 
-@app.route("/", methods=["GET", "POST"])
+
+@app.route("/callback", methods=['POST'])
 def callback():
+    # get X-Line-Signature header value
+    signature = request.headers['X-Line-Signature']
 
-    if request.method == "GET":
-        return "Hello Heroku"
-    if request.method == "POST":
-        signature = request.headers["X-Line-Signature"]
-        body = request.get_data(as_text=True)
+    # get request body as text
+    body = request.get_data(as_text=True)
+    app.logger.info("Request body: " + body)
 
-        try:
-            handler.handle(body, signature)
-        except InvalidSignatureError:
-            abort(400)
+    # handle webhook body
+    try:
+        handler.handle(body, signature)
+    except InvalidSignatureError:
+        print("Invalid signature. Please check your channel access token/channel secret.")
+        abort(400)
 
-        return "OK"
+    return 'OK'
 
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    get_message = event.message.text
+    
+    msg = (event.message.text).lower()
+    
+    if ('hello' in msg) or ('早安' in msg) or ('你好' in msg):
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text="哈囉, 祝你有愉快的一天"))
 
-    # Send To Line
-    reply = TextSendMessage(text=f"{get_message}")
-    line_bot_api.reply_message(event.reply_token, reply)
+
+if __name__ == "__main__":
+    #line_bot_api.push_message(to, TextSendMessage(text='Hello World!'))
+
+    app.run()
