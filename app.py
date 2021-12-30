@@ -38,7 +38,7 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     
-    msg = (event.message.text).lower()
+    msg = event.message.text
     
     if ('hello' in msg) or ('早安' in msg) or ('你好' in msg):
         line_bot_api.reply_message(
@@ -51,6 +51,5 @@ def handle_message(event):
 
 
 if __name__ == "__main__":
-    #line_bot_api.push_message(to, TextSendMessage(text='Hello World!'))
 
     app.run()
