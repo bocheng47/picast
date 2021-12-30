@@ -44,6 +44,10 @@ def handle_message(event):
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text="哈囉, 祝你有愉快的一天"))
+    
+    # Send To Line
+    reply = TextSendMessage(text=f"{msg}")
+    line_bot_api.reply_message(event.reply_token, reply)
 
 
 if __name__ == "__main__":
