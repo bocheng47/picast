@@ -1,0 +1,1 @@
+./Desktop/build/armv7l/Release/object_detection_sample_ssd -m /home/pi/Desktop/build/open_model_zoo/tools/downloader/intel/face-detection-adas-0001/FP16/face-detection-adas-0001.xml -d MYRIAD -i /home/pi/Desktop/face.jpeg
