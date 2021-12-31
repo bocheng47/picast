@@ -12,12 +12,18 @@
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
+        <b>Hardware</b>
         <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-        <li><a href="#build">Build</a></li>
+        <li><a href="#circuit-design">Circuit Design</a></li>
+        <b>Software</b>
+        <li><a href="#install-package">Install Package</a></li>
+        <li><a href="#dht22-module">DHT22 Module</a></li>
+        <li><a href="#emotion-detection-module">Emotion Detection Module</a></li>
+        <li><a href="#music-recommendation-module">Music Recommendation Module</a></li>
+        <li><a href="#operation-module">Operation Module</a></li>
+        <li><a href="#combine-all-module">Combine All Module</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
     <li><a href="#reference">Reference</a></li>
   </ol>
 </details>
@@ -36,46 +42,8 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 
 ### FlowChart
 
+<img src="Flowchart.png">
 
-```flow
-st=>start: activate Picast 
-op=>operation: Open door
-bop_1=>operation: Emotion detection
-bop_2=>operation: Temperature, humidity detection
-bop_3=>operation: Recommend music by AI model
-a=>operation: Playing music
-feedback=>operation: Get Feedback
-cond=>condition: Pause music Yes or No?
-e=>end: Music finished
-e2=>end: Pause music
-
-st->op->bop_1->bop_2->bop_3->a->feedback->cond
-cond(Yes)->e2
-cond(No)->e
-```
-
-```flow
-st[註冊印象筆記]-->a
-a{是否已經購買馬克飛象}
-a-->|是|b1(您已購買馬克飛象可以使用markdown語法)
-a-->|否|b2(您還未能成功購買馬克飛象但你可以免費試用10天)
-b1-->c[歡迎使用馬克飛象]
-b2-->d{是否要購買馬克飛象}
-d-->|是|e1(您已成功購買馬克飛象歡迎使用)
-e1-->c
-d-->|否|e2(試用10天后將會到期歡迎購買)
-```
-```flow
-st=>start: 註冊印象筆記
-e=>end: 您可以使用markdown
-op1=>operation: 登入印象筆記
-op2=>operation: 購買並登入馬克飛象
-cond=>condition: 是否已經購買並登入了馬克飛象?
-
-st->op1->cond
-cond(yes)->e
-cond(no)->op2->e
-```
 ### Built With
 
 * [Next.js](https://nextjs.org/)
