@@ -1,40 +1,195 @@
-# Flask-LINE-Bot-Heroku
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-Picast">About The Picast</a>
+      <ul>
+        <li><a href="#flowchart">FlowChart</a></li>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+        <li><a href="#build">Build</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#reference">Reference</a></li>
+  </ol>
+</details>
 
-### 一. 自動部署 Heroku
-首先我們先做一個最簡單的 Echo Bot (也就是你跟他說什麼，他都會回覆一模一樣的話給你) 點擊下面紫色的 Deploy to Heroku 按鈕
 
-<a href="https://heroku.com/deploy?template=https://github.com/hsuanchi/Flask-LINE-Bot-Heroku/tree/main">
-  <img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy">
-</a>
 
-點擊 Deploy to Heroku 按鈕後：
+<!-- ABOUT THE PICAST -->
+## About The Picast
 
-1. 會進入 Heroku 頁面
-2. 輸入專案名稱，這邊將會成為未來網址的一部分像是 https://xxxxxxx.herokuapp.com/
-3. 輸入在 LINE Developers 取得的 Access Token 和 CHANNEL_SECRET
+[![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-<img src="https://github.com/hsuanchi/Flask-LINE-Bot-Heroku/blob/main/img/step1%20LINE-bot%20deploy_to_heroku.png" width="800px" height="auto">
+Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email`, `email_client`, `project_title`, `project_description`
 
-然後等待 Heroku 建立部署，完成後會出現以下畫面，綠色勾勾就代表部署成功囉！
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-<img src="https://github.com/hsuanchi/Flask-LINE-Bot-Heroku/blob/main/img/step2%20LINE-bot%20deploy_to_heroku_success.png" width="800px" height="auto">
 
-### 二. 更新 LINE webhook
-將剛剛部署完後的 heroku 網址填入 LINE Developers 的 Webhook URL，就完成設定囉！
+### FlowChart
 
-<img src="https://github.com/hsuanchi/Flask-LINE-Bot-Heroku/blob/main/img/step3%20LINE-bot%20depoly%20webhook%20settings.png" width="800px" height="auto">
 
-### 三. 測試 LINE Bot 機器人
-這時候我們密機器人，如果出現 echo 的狀態，就代表部署成功囉！
+```flow
+st=>start: activate Picast 
+op=>operation: Open door
+bop_1=>operation: Emotion detection
+bop_2=>operation: Temperature, humidity detection
+bop_3=>operation: Recommend music by AI model
+a=>operation: Playing music
+feedback=>operation: Get Feedback
+cond=>condition: Pause music Yes or No?
+e=>end: Music finished
+e2=>end: Pause music
 
-<img src="https://github.com/hsuanchi/Flask-LINE-Bot-Heroku/blob/main/img/step4%20LINE-bot%209527%20demo.png" width="200px" height="auto">
+st->op->bop_1->bop_2->bop_3->a->feedback->cond
+cond(Yes)->e2
+cond(No)->e
+```
 
-### 四. 如何客制成自己的 LINE-Bot
-首先將這份 LINE-Bot template Fork 回自己的 GitHub 專案
-1. 修改 Flask-LINE-Bot-Heroku/app.py/ 內的程式碼
-2. 修改 README.md 內的路徑 (如下圖)，改成自己的專案位置
-3. 點擊 Deploy to Heroku 按鈕完成部署
 
-<img src="https://github.com/hsuanchi/Flask-LINE-Bot-Heroku/blob/main/img/custom%20readme-flask-line-bot.png" width="800px" height="auto">
+### Built With
 
-本篇文章同步刊登於 [ [Flask – LINE Bot 教學] Heroku 一鍵自動部署 - Max行銷誌](https://www.maxlist.xyz/2020/11/30/flask-line-bot-deploy-heroku/)，如果有遇到任何問題，歡迎私訊或留言，我會盡快回覆您
+* [Next.js](https://nextjs.org/)
+* [React.js](https://reactjs.org/)
+* [Vue.js](https://vuejs.org/)
+* [Angular](https://angular.io/)
+* [Svelte](https://svelte.dev/)
+* [Laravel](https://laravel.com)
+* [Bootstrap](https://getbootstrap.com)
+* [JQuery](https://jquery.com)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
+<!-- GETTING STARTED -->
+## Getting Started
+
+This is an example of how you may give instructions on setting up your project locally.
+To get a local copy up and running follow these simple example steps.
+
+### Prerequisites
+
+This is an example of how to list things you need to use the software and how to install them.
+* npm
+  ```sh
+  npm install npm@latest -g
+  ```
+
+### Installation
+
+1. Get a free API Key at [https://example.com](https://example.com)
+2. Clone the repo
+   ```sh
+   git clone https://github.com/github_username/repo_name.git
+   ```
+3. Install NPM packages
+   ```sh
+   npm install
+   ```
+4. Enter your API in `config.js`
+   ```js
+   const API_KEY = 'ENTER YOUR API';
+   ```
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
+<!-- USAGE EXAMPLES -->
+## Usage
+
+Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+
+_For more examples, please refer to the [Documentation](https://example.com)_
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
+<!-- ROADMAP -->
+## Roadmap
+
+- [] Feature 1
+- [] Feature 2
+- [] Feature 3
+    - [] Nested Feature
+
+See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
+<!-- CONTRIBUTING -->
+## Contributing
+
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
+Don't forget to give the project a star! Thanks again!
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
+<!-- LICENSE -->
+## License
+
+Distributed under the MIT License. See `LICENSE.txt` for more information.
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
+<!-- CONTACT -->
+## Contact
+
+Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
+
+Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
+<!-- ACKNOWLEDGMENTS -->
+## Acknowledgments
+
+* []()
+* []()
+* []()
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[contributors-shield]: https://img.shields.io/github/contributors/github_username/repo_name.svg?style=for-the-badge
+[contributors-url]: https://github.com/github_username/repo_name/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/github_username/repo_name.svg?style=for-the-badge
+[forks-url]: https://github.com/github_username/repo_name/network/members
+[stars-shield]: https://img.shields.io/github/stars/github_username/repo_name.svg?style=for-the-badge
+[stars-url]: https://github.com/github_username/repo_name/stargazers
+[issues-shield]: https://img.shields.io/github/issues/github_username/repo_name.svg?style=for-the-badge
+[issues-url]: https://github.com/github_username/repo_name/issues
+[license-shield]: https://img.shields.io/github/license/github_username/repo_name.svg?style=for-the-badge
+[license-url]: https://github.com/github_username/repo_name/blob/master/LICENSE.txt
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: https://linkedin.com/in/linkedin_username
+[product-screenshot]: images/screenshot.png
