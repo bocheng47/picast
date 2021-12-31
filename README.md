@@ -54,7 +54,28 @@ cond(Yes)->e2
 cond(No)->e
 ```
 
+```flow
+st[註冊印象筆記]-->a
+a{是否已經購買馬克飛象}
+a-->|是|b1(您已購買馬克飛象可以使用markdown語法)
+a-->|否|b2(您還未能成功購買馬克飛象但你可以免費試用10天)
+b1-->c[歡迎使用馬克飛象]
+b2-->d{是否要購買馬克飛象}
+d-->|是|e1(您已成功購買馬克飛象歡迎使用)
+e1-->c
+d-->|否|e2(試用10天后將會到期歡迎購買)
+```
+```flow
+st=>start: 註冊印象筆記
+e=>end: 您可以使用markdown
+op1=>operation: 登入印象筆記
+op2=>operation: 購買並登入馬克飛象
+cond=>condition: 是否已經購買並登入了馬克飛象?
 
+st->op1->cond
+cond(yes)->e
+cond(no)->op2->e
+```
 ### Built With
 
 * [Next.js](https://nextjs.org/)
